@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Voter Registration </title>
+    <script>
+        function showPopup() {
+            var voterId = prompt("Unique Voter ID generated:", "{{ voter_id }}");
+            if (voterId !== null) {
+                alert("REGISTRATION is successful! Thanks For Registration");
+                window.location.href = "/user_home";
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            
+        }
+        img{
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+          }
+
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .container {
+            max-width: 1200px;
+            margin-top:40px;
+            overflow: hidden;
+            margin-top: 40px;
+            
+        }
+        h2{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            
+            
+        }
+        
+
+        .info {
+            float: left;
+            width: 30%;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            background : linear-gradient(to bottom right, #3498db, #5805f1)
+        }
+        li{
+            margin-bottom: 10px;
+        }
+        .form {
+            float: left;
+            width: 70%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border: 1px solid #3498db;
+           
+            border-radius: 5px;
+        }
+
+        
+        .info {
+            
+            color: #fff;
+        }
+
+        
+        
+
+       
+        .form button {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+        }
+       
+        
+        .form button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 shadow-sm">
+        <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+            <h2 class="m-0">
+                <i  >
+                    <img  style=" height:50px; width:50px;margin-top:0px" src="{{ url_for('static', filename='kbp_logo.jpg') }}" alt="logo">
+                </i>
+                
+            </h2>
+            
+        </a>
+        <button  type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <h2 style="margin-left: -10px;">Karmveer Bhaurao Patil, College (Vashi)</h2>
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                
+                <a href="/" class="nav-item nav-link active ">Home</a>
+                
+                <a href="#" class="nav-item nav-link">About</a>
+                <a href="#" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <h2 style="padding-top: 30px"> Voter Registration</h2>
+    <div style="margin-left: 400px; padding-top:20px">
+        <!--  username already exists message -->
+        {% if username_exists %}
+            <p class="error-message">User name is already exists</p>
+        {% endif %}
+
+        {% if email_exists %}
+        <p class="error-message">Please, Enter Valid Email. Another User Already register with this Email</p>
+        {% endif %}
+
+        
+        {% if id_exists %}
+            <p class="error-message">Please enter valid student Id</p>
+        {% endif %}
+    </div>
+    <div  class="container">
+       
+        <div class="info">
+            <img style="border-radius:90px; margin-left:120px;" src="{{ url_for('static', filename='admin_img.jpg') }}" width="70px" height="70px" alt="Admin">
+            <h2>Information Section</h2>
+            <p>
+                <ul>
+                    <li>Please enter valid Username and Email Id</li>
+                </ul>
+
+                <ul>
+                    <li>Provide accurate and valid information during registration.</li>
+                </ul>
+                
+                <ul>
+                    <li>Use your official college student ID for verification.</li> 
+                 </ul>
+                
+                 <ul>
+                    <li>Any attempt of fraudulent registration may result in disqualification.</li>
+                </ul>
+               
+                <ul>
+                    <li>Contact election authorities for any registration-related issues.</li>
+                </ul>
+            </p>
+        </div> 
+
+        <div style="  height:430px"  class="form">
+            
+            <form  action="/register" method="post">
+                <label for="fullName">Full Name:</label>
+                <input style="width:100%" type="text" id="fullName" name="fullName" required>
+
+                <label style="margin-top: 20px;" for="username">Username:</label>
+                <input style="width:255px" type="text" id="username" name="username" required>
+               
+                <label style="margin-top: 20px; margin-left:35px" for="email">Email:</label>
+                <input style="margin-top: 20px; width:355px;" type="text" id="email" name="email" required>
+
+                <label style=" margin-top:20px" for="department">Department:</label>
+                <select style="margin-top:20px; height: 30px; width:245px" id="department" name="department" required>
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Microbiology">Microbiology</option>
+                    <option value="BSC-Maths">BSC-Maths</option>
+                    <option value="Bio-Chemistry">Bio-Chemistry</option>
+                    <!-- Add more departments as needed -->
+                </select>
+            
+                <label style="margin-top: 20px; margin-left:30px " for="year">Class:</label>
+                <select style="height: 30px; width:360px" id="year" name="year" required>
+                    <option value="" disabled selected>Select Year or Class</option>
+                    <option value="First Year">First Year</option>
+                    <option value="Second Year">Second Year</option>
+                    <option value="Third Year">Third Year</option>
+                </select>
+
+                <label style="margin-top: 20px;"  for="division">Division:</label>
+                <select style="height: 30px; width:275px" id="division" name="division" required>
+                    <option value="" disabled selected>Division</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+
+                <label style="margin-top: 20px; margin-left:30px" for="studentID">Student ID :</label>
+                <input style="height: 30px; width:315px" type="text" id="studentID" name="studentID" required>
+            
+                
+                <input  style="display: inline-block; box-shadow: 2px 4px 5px gray; height:50px; width: 200px; margin-left:300px; margin-top:40px; padding-left:40px;   background-color: blue; color: white;
+                text-decoration: none; border-radius: 5px; border: 2px solid blue;" type="submit" value="Submit">  </form>
+        </div>
+    </div>
+
+</body>
+</html>

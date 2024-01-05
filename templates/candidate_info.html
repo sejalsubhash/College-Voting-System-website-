@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+ <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+        .div-form {
+            max-width: 1200px;
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-top:30px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+
+        img{
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+          }
+
+        label, input, select {
+            display: block;
+            margin-bottom: 10px;
+        }
+        nav{
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: 2px 4px 5px gray;
+        }
+        label {
+            font-size: 25px;
+            margin-left: 25px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        input, select {
+            width: 500px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left:-300px;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23000' d='M1.5 0l3 3 3-3h-6zM1.5 8l3-3 3 3h-6z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        .submit-button {
+            background:linear-gradient(to bottom right, #7752FE, #190482);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 3px;
+            border-radius: 8px;
+            border-color: blue ; 
+            width:300px;
+            margin-top:40px;
+            margin-left:350px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 shadow-sm">
+        <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+            <h2 class="m-0">
+                <i  >
+                    <img  style=" height:50px; width:50px;margin-top:0px" src="{{ url_for('static', filename='kbp_logo.jpg') }}" alt="logo">
+                </i>
+                
+            </h2>
+            
+        </a>
+        <button  type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <h2 style="margin-left: -10px;">Karmveer Bhaurao Patil, College (Vashi)</h2>
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                
+                <a href="/" class="nav-item nav-link active ">Home</a>
+                <a href="/admin" class="nav-item nav-link active ">Admin Home</a>
+                <a href="#" class="nav-item nav-link">About</a>
+                <a href="#" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+   
+        {% if error_message %}
+            <div class="error">{{ error_message }}</div>
+        {% endif %}
+
+        {% if studentID_exists %}
+                <p class="error-message">Please, Check Your Student ID   </p>
+        {% endif %}
+
+        {% if email_exists %}
+            <p class="error-message">Please, Enter Valid Email. Another Candidate Already Register with this Email ID</p>
+        {% endif %}
+
+        {% if phone_exists %}
+            <p class="error-message">Please, check Contact Number. Another Candidate Already Register with this Contact Number ID</p>
+        {% endif %}
+            
+        {% if file_exists %}
+            <p class="error-message">Please, Select Correct Logo File </p>
+        {% endif %}
+
+        {% if panel_exists %}
+            <p class="error-message">Please, Enter Valid Panel Name This Panel Name is Already Assign to the another Candidate </p>
+        {% endif %}
+
+        {% if phone_or_email_exists %}
+            <p>Contact Number Must be 10 digits</p>
+        {% endif %}
+    
+<div class="div-form" >
+    <h2 style="margin-left:300px; margin-top:20px; padding-bottom:20px;">Candidate Registration Form</h2>
+
+    <form action="/canidate_reg" method="POST" enctype="multipart/form-data">
+        <label for="studentID">Student ID:</label>
+        <input  type="text" id="studentID" name="studentID" required>
+
+        <label for="candidateName">Candidate Name:</label>
+        <input type="text" id="candidateName" name="candidateName" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>   
+       
+
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+            <option value="" disabled selected>Select Course</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Microbiology">Microbiology</option>
+            <option value="BSC-Maths">BSC-Maths</option>
+            <option value="Bio-Chemistry">Bio-Chemistry</option>
+        </select>
+
+        <label for="className">Class:</label>
+        <select id="className" name="className" required>
+            <option value="" disabled selected>Select Year or Class</option>
+                <option value="First Year">First Year</option>
+                <option value="Second Year">Second Year</option>
+                <option value="Third Year">Third Year</option>
+        </select>
+
+        <label for="division">Division:</label>
+        <select id="division" name="division" required>
+            <option value="" disabled selected>Division</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+        </select>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="panelName">Panel Name:</label>
+        <input type="text" id="panelName" name="panelName" required>
+
+       
+
+        <label for="file">Panel Logo:</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+
+        <button class="submit-button" type="submit">Add</button>
+    </form>
+</div>
+
+</body>
+</html>
+
+<!-- <label for="user_image">User Image:</label>
+        <input type="file" id="user_image" name="user_image" accept="image/*" required>-->

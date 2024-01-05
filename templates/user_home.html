@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        img{
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+          }
+
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom:30px;
+            border-radius: 8px;
+            height:250px; 
+            width: 500px;
+        }
+      
+
+        .profile {
+            width: 30%;
+        }
+
+        .profile img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .profile-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .user-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .user-role {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .content {
+            width: 65%;
+        }
+
+        
+        .navbar-brand h2 {
+            margin: 0;
+        }
+
+        .navbar-toggler {
+            margin-right: 4rem;
+        }
+
+        .navbar-nav {
+            padding: 1rem;
+        }
+
+        .navbar-nav a {
+            margin-right: 1rem;
+        }
+
+        .user-info{
+
+          margin-left: 10px;
+          margin-bottom: 10px;
+        }
+
+        .container-info {
+           
+            overflow: hidden;
+            display: flex;
+            
+           height:200px;
+           width: 400px;
+            background-color: #fff;
+            box-shadow: 2px 4px 5px black;
+            padding: 15px;  
+            border-radius: 8px;
+            
+        }
+
+    </style>
+    <title>User Profile Page</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 shadow-sm">
+        <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+            <h2 class="m-0">
+                <i  >
+                    <img  style=" height:50px; width:50px;margin-top:0px" src="{{ url_for('static', filename='kbp_logo.jpg') }}" alt="logo">
+                </i>
+                
+            </h2>
+            
+        </a>
+        <button  type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <h2 style="margin-left: -10px;">Karmveer Bhaurao Patil, College (Vashi)</h2>
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                
+                <a href="/" class="nav-item nav-link active ">Home</a>
+                
+                <a href="#" class="nav-item nav-link">About</a>
+                <a href="#" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div style="margin-left:50px; padding: 20px; box-shadow: 2px 4px 5px gray; background:linear-gradient(to bottom right, #ECF9FF, #96EFFF); display:flex" class="container">
+        <div class="profile">
+            <img style="margin-top:20px; height:100px; width:100px;" src="{{ url_for('static', filename='user.png') }}"  alt="User Profile Picture">
+        </div>
+
+        <div  class="content">
+            <!-- Add your main content here -->
+            <h4 style="margin-top:-8px; ">Welcome</h4>
+            <ul class="user-info">
+                <h5 style=" font-family: Rockwell, serif; font-size:22px; margin-left:-10px">{{user.name}} </h5> <!--{{voter_login.name}}-->
+              <li>
+                <h6 style="font-family: Rockwell, serif;">{{user.username}}</h6>   <!--{{voter_login.username}}-->
+              </li>
+              <li>
+                <h6 style="font-family: Rockwell, serif;">{{user.email}}</h6>  <!--{{voter_login.email}}-->
+              </li>
+            </ul>
+            <p style="margin-left:-100px; margin-top:15px">Welcome To College Voting Syatem</p>
+        </div>
+    </div>
+
+   
+
+    <div style="margin-left:50px; margin-top:20px ; height:auto; width:auto;box-shadow: 2px 4px 5px gray; background : linear-gradient(to bottom right, #3498db, #96EFFF);" class="container" >
+        <h3 style="padding-top: 30px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;margin-left:38%; color:blue"><u>Take Action Today</u></h3>
+        <p style="padding-left:20px;padding-top:10px;padding-right:20px;padding-bottom:5px;font-family:Verdana, Geneva, Tahoma, sans-serif">
+            Register to vote, mark your calendar for upcoming elections, and join us in shaping the future of our college. 
+            Together, we can build a stronger,more vibrant community that reflects the values and aspirations of every student.
+        </p>
+        <p style="padding-left:20px;padding-top:0px;padding-right:20px;padding-bottom:10px;font-family:Verdana, Geneva, Tahoma, sans-serif">
+            Every vote has the power to make a difference. Your participation in the electoral process empowers you to be an agent of change, 
+            advocate for causes you believe in, and contribute to the growth and development of our college community.
+        </p>
+
+        <p style="padding-left:20px;padding-top:0px;padding-right:20px;padding-bottom:10px;font-family:Verdana, Geneva, Tahoma, sans-serif">
+            Your active involvement in the election process ensures that our college is led by dedicated and capable individuals,
+            who represent your interests.
+        </p>
+
+        <div style="padding-bottom:50px; ">
+        <a style="display: inline-block; box-shadow: 2px 4px 5px gray; height:30px; width: 200px; margin-left:400px; margin-top: 0px; padding-left:40px;   background-color: blue; color: white;
+         text-decoration: none; border-radius: 5px; border: 2px solid blue;" href="/register">Register Now</a>
+        </div>
+
+    </div>
+    
+        
+
+</body>
+</html>
+
+
+<!--
+    Take Action Today
+Register to vote, mark your calendar for upcoming elections, and join us in shaping the future of our college. Together, we can build a stronger, more vibrant community that reflects the values and aspirations of every student.
+
+Empowerment Through Voting
+Every vote has the power to make a difference. Your participation in the electoral process empowers you to be an agent of change, advocate for causes you believe in, and contribute to the growth and development of our college community.
+
+Get Informed, Get Involved
+Learn about the candidates, their platforms, and the issues at stake. Engage in discussions, ask questions, and make informed decisions. Your engagement matters, and your voice deserves to be heard.
+
+ <div style="margin-left:650px; margin-top:-280px; padding: 20px; box-shadow: 2px 4px 5px gray; background:linear-gradient(to bottom right, #ECF9FF, #96EFFF);  " class="container"> 
+            <h4 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:25px; width:500px; margin-top:0px ;margin-left:105px"> "Your Vote Matters"</h4>
+            <h6 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size:20px; width:500px; margin-top:0px ;margin-left:75px">  Vote for Change and Progress! </h6>
+            <a style="display: inline-block; box-shadow: 2px 4px 5px gray; height:30px; width: 200px; margin-left:140px; margin-top: 50px; padding-left:40px;   background-color: blue; color: white;
+         text-decoration: none; border-radius: 5px; border: 2px solid blue;" href="/user_images">Vote Now</a>
+            
+            <p>
+                As students, we have the power to shape the future of our college community. By casting your vote, you are contributing to the decisions that will impact our campus, our education, and our experiences. 
+                Every vote counts and every voice deserves to be heard.
+            </p>
+            <p>
+                Voting is not just a right, but a responsibility. It's a chance to stand up for what you believe in and make a difference.
+             Together, we can create a college environment that reflects our values and aspirations.
+            </p>
+            <p>
+                So, let's make our voices heard and participate in building a better tomorrow. 
+                Your vote is your voice—use it to inspire positive change and shape the future of our college community."
+            </p>
+          
+        </div>
+    </div>
+-->

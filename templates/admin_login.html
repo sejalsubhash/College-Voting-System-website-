@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            
+        }
+        nav{
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: 2px 4px 5px gray;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-top:80px;
+            overflow: hidden;
+            margin-top: 40px;
+            
+        }
+        h2{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .info {
+            float: left;
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        img{
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+          }
+
+        .form {
+            float: left;
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            background:linear-gradient(to bottom right, #C499F3, #96EFFF);
+        }
+
+        
+        .info {
+            background:linear-gradient(to bottom right, #C499F3, #96EFFF);
+            color: black;
+        }
+
+        
+        .form {
+            border: 1px solid #3498db;
+            border-radius: 5px;
+        }
+
+       
+        .form input {
+            width: 400px;
+            margin-top:25px;
+            padding: 10px;
+            margin-left:100px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border-radius:8px;
+        }
+
+        .form button {
+            background:linear-gradient(to bottom right, #7752FE, #190482);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 3px;
+            border-radius: 8px;
+            border-color: blue ;
+            margin-left:150px;
+            width:250px;
+            margin-top:40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 shadow-sm">
+        <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+            <h2 class="m-0">
+                <i  >
+                    <img  style=" height:50px; width:50px;margin-top:0px" src="{{ url_for('static', filename='kbp_logo.jpg') }}" alt="logo">
+                </i>
+                
+            </h2>
+            
+        </a>
+        <button  type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <h2 style="margin-left: -10px;">Karmveer Bhaurao Patil, College (Vashi)</h2>
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                
+                <a href="/" class="nav-item nav-link active ">Home</a>
+                <a href="/admin_login" class="nav-item nav-link active ">Admin</a>
+                <a href="#" class="nav-item nav-link">About</a>
+                <a href="#" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <h2 style="font-family:'Times New Roman', Times, serif"><u>ADMIN SECTION </u> </h2>
+    <div  class="container">
+       
+        <div class="info">
+            <img style="border-radius:90px; margin-left:230px" src="{{ url_for('static', filename='admin_img.jpg') }}"width="70px" height="70px" alt="Admin">
+            <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Information Section</h2>
+            <p >
+                <ul style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                    <li>Ensure that the voting system complies with relevant laws and regulations.</li>
+                </ul>
+                <ul style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                    <li>Respect privacy rights and handle voter and candidate data with the utmost care.</li>
+                </ul>
+                <ul style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                    <li> Provide transparency in the voting process to build trust among stakeholders.</li>
+                </ul>
+                <ul style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                    <li>Regularly update the system to align with any changes in electoral regulations</li>
+                </ul>
+            </p>
+        </div> 
+
+        <div style="margin-left: 600px; margin-top:-430px; height:430px"  class="form">
+            <h2 style="padding-bottom: 10px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:43px;">Login</h2>
+            <form class="login-form" action="/admin_login" method="post">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

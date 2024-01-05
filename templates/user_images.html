@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidates</title>
+    <style>
+        .candidates-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .candidate-card {
+            margin-left: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .user-info {
+            margin-top: -8px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="candidates-container">
+    {% for candidate_registration in users %}
+        <div class="candidate-card">
+            <h4>Welcome</h4>
+            <div class="user-info">
+                <h5>{{ candidate_registration.panelName }}</h5>
+                <h6 style="font-family: Rockwell, serif;">{{ candidate_registration.candidateName }}</h6>
+                <img src="{{ url_for('uploaded_file', filename=candidate_registration.file) }}" alt="User Image">
+            </div>
+            <!-- Additional content for candidate 1 -->
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

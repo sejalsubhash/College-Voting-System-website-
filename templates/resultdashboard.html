@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Vote Count</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        .headings {
+          padding-top:20px;
+          padding-bottom:20px;
+            text-align: center;
+            font-size: 40px;
+            font-family: Times New Roman', Times, serif,
+        }
+        .container{
+            width: 500px;
+            height: 80%;
+           
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+            background:linear-gradient(to bottom right, #C499F3, #96EFFF);
+        }
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            height: 60px;
+            z-index: 1000;
+        }
+       
+        img{
+          
+          
+          border-radius: 15px;
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li:hover {
+            background-color: #e0f7fa;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 shadow-sm">
+        <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+            <h2 class="m-0">
+                <i  >
+                    <img  style=" height:50px; width:50px;margin-top:0px" src="{{ url_for('static', filename='kbp_logo.jpg') }}" alt="logo">
+                </i>
+                
+            </h2>
+            
+        </a>
+        <button  type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <h2 style="margin-left: -10px;">Karmveer Bhaurao Patil, College (Vashi)</h2>
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                
+                <a href="/" class="nav-item nav-link active ">Home</a>
+                <a href="/admin" class="nav-item nav-link active ">Admin Home</a>
+                <a href="/user_images" class="nav-item nav-link">About</a>
+                <a href="#" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="headings"><u>Voting Statistics</u></h1>
+<div style="margin-left:20px" class="container">
+    <ul>
+        {% for candidate_count in candidate_counts %}
+            <li>{{ candidate_count.candidate_name }}: {{ candidate_count.count }} votes</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div style="margin-left:600px; margin-top:-480px" class="container" >
+    {% if max_vote_candidate %}
+        <p>{{ max_vote_candidate.candidate_name }} has the maximum votes: {{ max_vote_candidate.count }} votes</p>
+        <p>{{ max_vote_candidate.candidate_name }} Win By {{ max_vote_candidate.count }} votes</p>
+    {% else %}
+        <p>No votes yet.</p>
+    {% endif %}
+</div>
+</body>
+</html>
