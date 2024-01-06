@@ -22,8 +22,6 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587  # Use 465 for SSL
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'sejalsubhash1104@gmail.com'
-app.config['MAIL_PASSWORD'] = 'SEJ@LP@W@R'
 
 
 db = SQLAlchemy(app)
