@@ -20,10 +20,11 @@ Make sure you have the following installed before setting up the project:
 -Download Virtual environment in terminal : pip install virtualenv
 -create virtual environment : virtualenv venv
 -Activate the Virtual Environment: .\venv\Scripts\activate
+-install flask:pip install flask
 -insatall require libraries and packages.
 -open terminal and run: python main.py
 
-## Iportant
+## Important
 for user login:
 username:kbp_admin
 password:kbp1245
