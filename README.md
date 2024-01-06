@@ -19,14 +19,15 @@ Make sure you have the following installed before setting up the project:
 -Download Code in one folder and open with visual studio code.
 -Download Virtual environment in terminal : pip install virtualenv
 -create virtual environment : virtualenv venv
-
-###IMPORTANT:
-for user login:
-username:kbp_admin
-password:kbp1245
 -Activate the Virtual Environment: .\venv\Scripts\activate
 -insatall require libraries and packages.
 -open terminal and run: python main.py
+
+## Iportant
+for user login:
+username:kbp_admin
+password:kbp1245
+
 
 
 
