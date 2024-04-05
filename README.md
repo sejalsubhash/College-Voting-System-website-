@@ -25,7 +25,7 @@ Make sure you have the following installed before setting up the project:
 -open terminal and run: python main.py
 
 ## Important
-for user login:
+for Admin login:
 username:kbp_admin
 password:kbp1245
 
