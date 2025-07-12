@@ -1,7 +1,3 @@
-Here’s an enhanced and corrected version of your **README.md** file for the *College Voting System Website* project. The structure is improved for clarity, grammar corrected, and technical details made more precise:
-
----
-
 # 🎓 College Voting System Website
 
 ## 📌 Introduction
